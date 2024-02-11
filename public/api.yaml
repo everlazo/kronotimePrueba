@@ -1,0 +1,527 @@
+openapi: 3.0.3
+info:
+  title: Swagger Kronotime - OpenAPI 3.0
+  description: Prueba tecnica kronotime
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: evernavitlazocastillo@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: http://127.0.0.1:8000/api
+paths:
+  /user/create:
+    post:
+      tags:
+        - User
+      summary: Create a user
+      description: Create a user
+      operationId: UserControllerCreate
+      requestBody:
+        description: Register a user
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad Request
+        '404':
+          description: User not found
+          
+          
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Login a user
+      description: Login a user
+      operationId: AuthControllerLogin
+      requestBody:
+        description: Register a user
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginUser'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad Request
+        '404':
+          description: User not found
+  /auth/logout:
+    delete:
+      tags:
+        - Auth
+      summary: Logout session
+      description: Logout session
+      operationId: AuthControllerLogout
+      security:
+       - bearerAuth: []
+      responses:
+        '200':
+          description: Successful operation
+        '401':
+          description: unauthorized
+  
+  
+  /category/create:
+    post:
+      tags: 
+        - Category
+      summary: Create a category
+      description: Create a Category
+      operationId: CategoryControllerCreate
+      security:
+       - bearerAuth: []
+      requestBody:
+        description: Register a Category
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad Request
+        '404':
+          description: User not found
+          
+  /category/all:
+    get:
+      tags: 
+        - Category
+      summary: Get all Category
+      description: Get all Category
+      operationId: CategoryControllerAll
+      security:
+       - bearerAuth: []
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad Request
+        '404':
+          description: User not found
+
+
+  /payment/create:
+    post:
+      tags: 
+        - PaymentMethod
+      summary: Create a PaymentMethod
+      description: Create a PaymentMethod
+      operationId: PaymentMethodControllerCreate
+      security:
+       - bearerAuth: []
+      requestBody:
+        description: Register a PaymentMethod
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentMethod'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad Request
+        '404':
+          description: User not found
+          
+  /payment/all:
+    get:
+      tags: 
+        - PaymentMethod
+      summary: Get all PaymentMethod
+      description: Get all PaymentMethod
+      operationId: PaymentMethodControllerAll
+      security:
+       - bearerAuth: []
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad Request
+        '404':
+          description: User not found
+       
+       
+  /shipping/create:
+    post:
+      tags: 
+        - ShippingMethod
+      summary: Create a ShippingMethod
+      description: Create a ShippingMethod
+      operationId: ShippingMethodControllerCreate
+      security:
+       - bearerAuth: []
+      requestBody:
+        description: Register a ShippingMethod
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShippingMethod'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad Request
+        '404':
+          description: User not found
+          
+  /shipping/all:
+    get:
+      tags: 
+        - ShippingMethod
+      summary: Get all ShippingMethod
+      description: Get all ShippingMethod
+      operationId: ShippingMethodControllerAll
+      security:
+       - bearerAuth: []
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad Request
+        '404':
+          description: User not found
+   
+   
+  /product/create:
+    post:
+      tags: 
+        - Product
+      summary: Create a product
+      description: Create a user
+      operationId: ProductControllerCreate
+      security:
+       - bearerAuth: []
+      requestBody:
+        description: Register a product
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad Request
+        '404':
+          description: User not found
+          
+  /product/all:
+    get:
+      tags: 
+        - Product
+      summary: Get all products
+      description: Get all products
+      operationId: ProductControllerAll
+      security:
+       - bearerAuth: []
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad Request
+        '404':
+          description: User not found
+  
+  
+  /customer/create:
+    post:
+      tags: 
+        - Customer
+      summary: Create a Customer
+      description: Create a Customer
+      operationId: CustomerControllerCreate
+      security:
+       - bearerAuth: []
+      requestBody:
+        description: Register a Customer
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad Request
+        '404':
+          description: User not found
+          
+  /customer/all:
+    get:
+      tags: 
+        - Customer
+      summary: Get all Customer
+      description: Get all Customer
+      operationId: CustomerControllerAll
+      security:
+       - bearerAuth: []
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad Request
+        '404':
+          description: User not found
+        
+          
+  /cart/all:
+    get:
+      tags: 
+        - Cart
+      summary: Get all Cart
+      description: Get all Cart
+      operationId: CartControllerAll
+      security:
+       - bearerAuth: []
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad Request
+        '404':
+          description: User not found        
+  /order/all:
+    get:
+      tags: 
+        - Order
+      summary: Get all orders
+      description: Get all orders
+      operationId: OrderControllerAll
+      security:
+       - bearerAuth: []
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad Request
+        '404':
+          description: User not found   
+          
+  /order/create:
+    post:
+      tags: 
+        - Order
+      summary: Create a order
+      description: Create a user
+      operationId: OrderControllerCreate
+      security:
+       - bearerAuth: []
+      requestBody:
+        description: Register a order
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad Request
+        '404':
+          description: User not found
+          
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      
+  schemas:
+    User:
+      type: object
+      required: 
+        - username
+        - password
+      properties:
+        username:
+          type: string
+          example: "krono"
+        email:
+          type: string
+          example: "krono@gmail.com"
+        password:
+          type: string
+          example: "krono123"
+          
+    LoginUser:
+      type: object
+      required: 
+        - username
+        - password
+      properties:
+        username:
+          type: string
+          example: "krono"
+        password:
+          type: string
+          example: "krono123"
+          
+    Category:
+      type: object
+      required: 
+        - name
+      properties:
+        name:
+          type: string
+          example: "Accesorios"
+          
+    Product:
+      type: object
+      required: 
+        - name
+        - stock_keeping_unit
+        - price
+        - compare_price
+        - units
+        - image
+        - id_category
+      properties:
+        name:
+          type: string
+          example: "reloj"
+        stock_keeping_unit:
+          type: string
+          example: "REJ67"
+        price:
+          type: number
+          format: double
+          example: 300
+        compare_price:
+          type: number
+          format: double
+          example: 10
+        units:
+          type: integer
+          example: 10
+        image:
+          type: string
+          example: "https://google.com/img.png"
+        id_category:
+          type: integer
+          example: "1"
+
+    PaymentMethod:
+      type: object
+      required: 
+        - name
+      properties:
+        name:
+          type: string
+          example: "Efectivo"
+          
+    ShippingMethod:
+      type: object
+      required: 
+        - name
+        - monetary_value
+      properties:
+        name:
+          type: string
+          example: "Domicilio"
+        monetary_value:
+          type: number
+          format: double
+          example: 150
+          
+    Customer:
+      type: object
+      required: 
+        - name
+        - document
+        - email
+        - address
+        - phone
+        - department
+        - city
+      properties:
+        name:
+          type: string
+          example: "juan"
+        document:
+          type: string
+          example: "12345679"
+        email:
+          type: string
+          example: "juan@gmail.com"
+        address:
+          type: string
+          example: "dg 21 34"
+        phone:
+          type: string
+          example: "3125854125"
+        department:
+          type: string
+          example: "Cesar"
+        city:
+          type: string
+          example: "valledupar"
+          
+    Order:
+      type: object
+      required: 
+        - number_order
+        - id_customer
+        - id_cart
+        - id_payment_method
+        - id_shipping_method
+      properties:
+        number_order:
+          type: string
+          example: "ADC345"
+        id_customer:
+          type: integer
+          example: "1"
+        id_cart:
+          type: integer
+          example: "1"
+        id_payment_method:
+          type: integer
+          example: "1"
+        id_shipping_method:
+          type: integer
+          example: "1"
+          
+    Cart:
+      type: object
+      required: 
+        - total
+      properties:
+        discount:
+          type: number
+          format: double
+          example: "2"
+        total:
+          type: number
+          format: double
+          example: "10.5"
+        subtotal:
+          type: number
+          format: double
+          example: "1"
+
+
+
+
