@@ -31,7 +31,7 @@ Route::group(['prefix' => 'user'], function () {
     Route::post('create', [UserController::class, 'create']);
 });
 
-// Route::group(["middleware" => ["jwt.verify"]], function () {
+Route::group(["middleware" => ["jwt.verify"]], function () {
     Route::group(['prefix' => 'auth'], function () {
         Route::delete('logout', [AuthController::class, 'logout']);
     });
@@ -70,4 +70,4 @@ Route::group(['prefix' => 'user'], function () {
         Route::post('create', [CartController::class, 'create']);
         Route::get('all', [CartController::class, 'all']);
     });
-// });
+});
